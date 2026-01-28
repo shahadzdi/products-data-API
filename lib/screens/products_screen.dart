@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hw/screens/details_screen.dart';
 import 'package:hw/service/api.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -27,9 +28,12 @@ class ProductsScreen extends StatelessWidget {
           future: Api().getData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              ); // تظهر علامة تحميل
+              return Center(
+                child: LoadingAnimationWidget.threeArchedCircle(
+                  color: Colors.pink,
+                  size: 150,
+                ),
+              );
             }
             return GridView.builder(
               clipBehavior: Clip.none,
