@@ -21,6 +21,7 @@ class ProductsModel {
     return ProductsModel(
       id: json["id"],
       titel: json['title'],
+      description: json['description'],
       category: json['category'],
       price: json['price'],
       rating: json['rating'],
